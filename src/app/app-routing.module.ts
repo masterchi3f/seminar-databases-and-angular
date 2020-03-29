@@ -5,15 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: './components/home/home.module#HomeModule'
+    loadChildren: './modules/home/home.module#HomeModule'
   },
   {
     path: 'save',
-    loadChildren: './components/save/save.module#SaveModule'
+    loadChildren: './modules/save/save.module#SaveModule'
   },
   {
     path: '**',
-    loadChildren: './components/home/home.module#HomeModule'
+    loadChildren: './modules/home/home.module#HomeModule'
   }
 ];
 

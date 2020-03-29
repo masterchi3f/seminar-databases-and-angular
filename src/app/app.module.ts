@@ -9,8 +9,8 @@ import {MaterialModule} from '../material-module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HomeModule} from './components/home/home.module';
-import {SaveModule} from './components/save/save.module';
+import {HomeModule} from './modules/home/home.module';
+import {SaveModule} from './modules/save/save.module';
 import {ModelService} from './model/model.service';
 
 @NgModule({

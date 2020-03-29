@@ -4,7 +4,7 @@ import { SaveRoutingModule } from './save-routing.module';
 import {SaveComponent} from './save.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../../../material-module';
-import {StepperVerticalComponent} from '../../utils/stepper-vertical/stepper-vertical.component';
+import {StepperVerticalComponent} from '../../components/stepper-vertical/stepper-vertical.component';
 
 @NgModule({
   declarations: [SaveComponent, StepperVerticalComponent],
