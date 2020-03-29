@@ -1,0 +1,25 @@
+<mat-vertical-stepper [linear]="true" class="vert-stepper">
+
+  <mat-step *ngFor="let step of steps; let i = index;trackBy:trackByIdx">
+    <form>
+      <ng-template matStepLabel>{{step[0]}}</ng-template>
+      <mat-form-field>
+        <mat-label>{{step[1]}}</mat-label>
+        <input matInput required type="{{step[2]}}" [(ngModel)]="inputs[i]" name="input{{i}}">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious *ngIf="i != 0">Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Fire request</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="fire()">Fire</button>
+    </div>
+  </mat-step>
+
+</mat-vertical-stepper>
