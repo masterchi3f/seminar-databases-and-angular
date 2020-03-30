@@ -1,7 +1,7 @@
 <!-- hier muss eine select component hin, um save mit oder ohne relationen auszuwählen -->
 <!-- sollte für alle endpoints allgemein nutzbar sein -->
 
-<app-stepper-vertical></app-stepper-vertical>
+<app-stepper-vertical [Steps]="Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
 
 <mat-tab-group> <!-- eventuell in component auslagern, damits auch für alle endpoints nutzbar wird-->
   <mat-tab label="MongoDB">
