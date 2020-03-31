@@ -1,22 +1,21 @@
 <!-- hier muss eine select component hin, um save mit oder ohne relationen auszuwählen -->
 <!-- sollte für alle endpoints allgemein nutzbar sein -->
+<app-test-displayer [Steps]="Steps" [Tests]="Tests"></app-test-displayer>
 
-<app-stepper-vertical [Steps]="Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
-
-<mat-tab-group> <!-- eventuell in component auslagern, damits auch für alle endpoints nutzbar wird-->
-  <mat-tab label="MongoDB">
-    <div *ngFor="let input of model.inputs">
-      {{input}}
-    </div>
-  </mat-tab>
-  <mat-tab label="MariaDB">
-    <div>
-      Content 2
-    </div>
-  </mat-tab>
-  <mat-tab label="Neo4j">
-    <div>
-      Content 3
-    </div>
-  </mat-tab>
-</mat-tab-group>
+<!--<mat-tab-group> &lt;!&ndash; eventuell in component auslagern, damits auch für alle endpoints nutzbar wird&ndash;&gt;-->
+<!--  <mat-tab label="MongoDB">-->
+<!--    <div *ngFor="let input of model.inputs">-->
+<!--      {{input}}-->
+<!--    </div>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab label="MariaDB">-->
+<!--    <div>-->
+<!--      Content 2-->
+<!--    </div>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab label="Neo4j">-->
+<!--    <div>-->
+<!--      Content 3-->
+<!--    </div>-->
+<!--  </mat-tab>-->
+<!--</mat-tab-group>-->

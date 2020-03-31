@@ -1,5 +1,4 @@
 <mat-vertical-stepper [linear]="true" class="vert-stepper">
-
   <mat-step *ngFor="let step of Steps; let i = index;trackBy:trackByIdx">
     <form *ngIf="step">
       <ng-template matStepLabel>{{step.Title}}</ng-template>

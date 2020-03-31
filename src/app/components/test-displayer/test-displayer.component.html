@@ -1,0 +1,34 @@
+<div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
+  <h4>Select save test type:</h4>
+  <mat-form-field>
+    <mat-label>Save test</mat-label>
+    <mat-select [(value)]="SelectedTest">
+      <mat-option *ngFor="let test of Tests" [value]="test">
+        {{test}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-stepper-vertical *ngIf="SelectedTest" [Steps]="Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
+
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="SelectedTest">
+    <mat-card *ngFor="let result of Results">
+      <mat-card-header>
+        <mat-card-title>{{result.Name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-spinner mode="indeterminate" *ngIf="result.Loading"></mat-spinner>
+        <mat-expansion-panel *ngIf="!result.Loading">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Response Result
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          {{result.Content}}
+        </mat-expansion-panel>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

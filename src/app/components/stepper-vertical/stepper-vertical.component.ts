@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModelService}                                   from '../../model/model.service';
-import {Step}                     from '../../data-classes/step';
+import {Step}                                           from '../../data-classes/step';
 
 @Component({
   selector: 'app-stepper-vertical',
