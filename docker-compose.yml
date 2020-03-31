@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  mariadb-server:
+    build: https://5c120b6eb6dc4b7b2fed61ce03f1dbb834aaf55c@github.com/millenium9977/seminar-databases-and-express.git#typeorm:my-movie-db-backend
+    expose:
+    - "3000"
+    ports:
+    - 3000:3000
+    networks:
+    - mariadb-network
+    environment:
+      PORT: 3000
+
+      MARIA_USER: root
+      MARIA_PASSWORD: seminar
+    depends_on:
+      - mariadb-database
+
+  mariadb-database:
+    image: mariadb:latest
+    ports:
+    -
+    networks:
+    - mariadb-network
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: seminar
+      MYSQL_USER: seminar
+      MYSQL_PASSWORD: seminar
+
+volumes:
+  mariadb-database:
+
+
+networks:
+  mariadb-network:
+    driver: bridge
+  neo4j-network:
+    driver: bridge
+  mongodb-network:
+    driver: bridge
