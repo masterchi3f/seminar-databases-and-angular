@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModelService}      from '../../model/model.service';
 import {Step}              from '../../data-classes/step';
-import {NumberStep}        from '../../data-classes/number-step';
-import {StringStep}        from '../../data-classes/string-step';
 
 @Component({
   selector: 'app-save',
@@ -13,12 +11,16 @@ export class SaveComponent implements OnInit {
 
 
   public Steps: Step[] = [
-    new NumberStep(
-      'A number step',
-      'dont know what to do with this'),
-    new StringStep(
-      'A string strep',
-      'still dont know what to do with this')];
+    {
+      Title: 'Step One',
+      Type: 'text',
+      Value: '',
+    },
+    {
+      Title: 'Step Two',
+      Type: 'number',
+      Value: '',
+    }];
 
   model: ModelService;
 
