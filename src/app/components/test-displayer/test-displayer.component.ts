@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Step} from '../../data-classes/step';
+import {Component, Input, OnInit} from '@angular/core';
 import {Result} from '../../data-classes/result';
 import {Router} from '@angular/router';
 import {Test} from '../../data-classes/test';
@@ -11,13 +10,10 @@ import {Test} from '../../data-classes/test';
 })
 export class TestDisplayerComponent implements OnInit {
 
-  public SelectedTest: string;
+  public SelectedTest: Test;
 
   @Input()
   public Tests: Test[];
-
-  @Input()
-  public Steps: Step[];
 
   router: Router;
 
@@ -35,9 +31,7 @@ export class TestDisplayerComponent implements OnInit {
   }
 
   public StartTest() {
-    console.log(this.Steps);
     console.log(this.Tests);
-
   }
 
 }

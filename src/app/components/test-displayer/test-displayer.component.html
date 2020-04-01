@@ -10,7 +10,7 @@
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
+    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="SelectedTest">

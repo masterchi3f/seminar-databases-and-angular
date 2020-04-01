@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Step} from '../../data-classes/step';
 import {Test} from '../../data-classes/test';
 
 @Component({
@@ -9,29 +8,42 @@ import {Test} from '../../data-classes/test';
 })
 export class UtilsComponent implements OnInit {
 
-  public Steps: Step[] = [
-    {
-      Title: 'Step One Utils',
-      Name: 'One',
-      Type: 'text',
-      Value: '',
-    },
-    {
-      Title: 'Step Two Utils',
-      Name: 'Two',
-      Type: 'number',
-      Value: '',
-    }
-  ];
-
   public Tests: Test[] = [
     {
       Title: 'Utils with relations',
-      Path: '/'
+      Path: '/',
+      Steps: [
+        {
+          Title: 'Step One Utils',
+          Name: 'One',
+          Type: 'text',
+          Value: '',
+        },
+        {
+          Title: 'Step Two Utils',
+          Name: 'Two',
+          Type: 'number',
+          Value: '',
+        }
+      ]
     },
     {
       Title: 'Utils without relations',
-      Path: '/'
+      Path: '/',
+      Steps: [
+        {
+          Title: 'Step One Utils',
+          Name: 'One',
+          Type: 'text',
+          Value: '',
+        },
+        {
+          Title: 'Step Two Utils',
+          Name: 'Two',
+          Type: 'number',
+          Value: '',
+        }
+      ]
     }
   ];
 

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {SaveComponent} from './save.component';
 import {SearchComponent} from './search.component';
 import {DeleteComponent} from './delete.component';
