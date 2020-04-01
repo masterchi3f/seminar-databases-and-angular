@@ -7,7 +7,7 @@
         <input matInput required [type]="step.Type" [(ngModel)]="step.Value" name="input">
       </mat-form-field>
       <div>
-        <div class="item"><button mat-button matStepperPrevious *ngIf="i != 0">Back</button></div>
+        <div class="item"><button mat-button matStepperPrevious *ngIf="i !== 0">Back</button></div>
         <div class="item"><button mat-button matStepperNext>Next</button></div>
       </div>
     </form>
@@ -18,12 +18,13 @@
     <div>
       <h4>Test parameters:</h4>
       <div *ngFor="let step of Steps">
-        {{step.Title}}  {{step.Value}}
+        {{step.Title}}: {{step.Value}}
+        <mat-error style="display:inline;" *ngIf="step.Value == ''">empty</mat-error>
       </div>
       <br>
       <div>
         <div class="item"><button mat-button matStepperPrevious>Back</button></div>
-        <div class="item"><button mat-button (click)="fire()">Fire</button></div>
+        <div class="item"><button mat-button (click)="fire()" *ngIf="Steps.every(checkSteps)">Fire</button></div>
       </div>
     </div>
   </mat-step>

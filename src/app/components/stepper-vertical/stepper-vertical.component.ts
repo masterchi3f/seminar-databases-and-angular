@@ -25,4 +25,8 @@ export class StepperVerticalComponent implements OnInit {
     return index;
   }
 
+  checkSteps(step: Step): boolean {
+    return step.Value !== '';
+  }
+
 }
