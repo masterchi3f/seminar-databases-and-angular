@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Step} from '../../data-classes/step';
 import {Result} from '../../data-classes/result';
 import {Router} from '@angular/router';
+import {Test} from '../../data-classes/test';
 
 @Component({
   selector: 'app-test-displayer',
@@ -13,7 +14,7 @@ export class TestDisplayerComponent implements OnInit {
   public SelectedTest: string;
 
   @Input()
-  public Tests: string[];
+  public Tests: Test[];
 
   @Input()
   public Steps: Step[];
@@ -35,6 +36,8 @@ export class TestDisplayerComponent implements OnInit {
 
   public StartTest() {
     console.log(this.Steps);
+    console.log(this.Tests);
+
   }
 
 }

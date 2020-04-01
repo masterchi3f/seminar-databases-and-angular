@@ -4,7 +4,7 @@
     <mat-label>{{router.url.replace('/endpoints', '')[1].toUpperCase() + router.url.replace('/endpoints', '').slice(2)}} test</mat-label>
     <mat-select [(value)]="SelectedTest">
       <mat-option *ngFor="let test of Tests" [value]="test">
-        {{test}}
+        {{test.Title}}
       </mat-option>
     </mat-select>
   </mat-form-field>

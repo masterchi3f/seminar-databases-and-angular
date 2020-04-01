@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Step} from '../../data-classes/step';
+import {Test} from '../../data-classes/test';
 
 @Component({
   selector: 'app-utils',
@@ -11,19 +12,27 @@ export class UtilsComponent implements OnInit {
   public Steps: Step[] = [
     {
       Title: 'Step One Utils',
+      Name: 'One',
       Type: 'text',
       Value: '',
     },
     {
       Title: 'Step Two Utils',
+      Name: 'Two',
       Type: 'number',
       Value: '',
     }
   ];
 
-  public Tests: string[] = [
-    'Utils with relations',
-    'Utils without relations',
+  public Tests: Test[] = [
+    {
+      Title: 'Utils with relations',
+      Path: '/'
+    },
+    {
+      Title: 'Utils without relations',
+      Path: '/'
+    }
   ];
 
   constructor() {

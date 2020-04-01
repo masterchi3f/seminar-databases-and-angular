@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Step} from '../../data-classes/step';
+import {Test} from '../../data-classes/test';
 
 @Component({
   selector: 'app-save',
@@ -11,19 +12,27 @@ export class SaveComponent implements OnInit {
   public Steps: Step[] = [
     {
       Title: 'Step One Save',
+      Name: 'One',
       Type: 'text',
       Value: '',
     },
     {
       Title: 'Step Two Save',
+      Name: 'Two',
       Type: 'number',
       Value: '',
     }
   ];
 
-  public Tests: string[] = [
-    'Save with relations',
-    'Save without relations',
+  public Tests: Test[] = [
+    {
+      Title: 'Save with relations',
+      Path: '/'
+    },
+    {
+      Title: 'Save without relations',
+      Path: '/'
+    }
   ];
 
   constructor() {

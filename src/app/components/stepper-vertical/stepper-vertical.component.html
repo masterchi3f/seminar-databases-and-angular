@@ -3,7 +3,7 @@
     <form *ngIf="step">
       <ng-template matStepLabel>{{step.Title}}</ng-template>
       <mat-form-field style="margin-top: 10px">
-        <mat-label>{{step.Title}}</mat-label>
+        <mat-label>{{step.Name}}</mat-label>
         <input matInput required [type]="step.Type" [(ngModel)]="step.Value" name="input">
       </mat-form-field>
       <div>
@@ -18,7 +18,7 @@
     <div>
       <h4>Test parameters:</h4>
       <div *ngFor="let step of Steps">
-        {{step.Title}}: {{step.Value}}
+        {{step.Name}}: {{step.Value}}
         <mat-error style="display:inline;" *ngIf="step.Value == ''">empty</mat-error>
       </div>
       <br>
