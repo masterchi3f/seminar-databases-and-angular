@@ -34,8 +34,70 @@ services:
       - MYSQL_PASSWORD=seminar
       - MYSQL_DATABASE=moviedb
 
+  mongo-server:
+    build: https://5c120b6eb6dc4b7b2fed61ce03f1dbb834aaf55c@github.com/millenium9977/seminar-databases-and-express.git#mongoose:my-movie-db-backend
+    expose:
+      - "2999"
+    ports:
+      - 2999:2999
+    networks:
+      - mongodb-network
+    environment:
+      - PORT=2999
+      - RETRY_TIMEOUT=10000
+      - CONNECTION_URI=mongodb://seminar:seminar@mongo-database:27017
+    depends_on:
+      - mongo-database
+
+  mongo-database:
+    image: mongo
+    restart: always
+    networks:
+      - mongodb-network
+    ports:
+      - 27016:27017
+    volumes:
+      - mongo-database:/mongodb/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=seminar
+      - MONGO_INITDB_ROOT_PASSWORD=seminar
+
+  neo4j-server:
+    build: https://5c120b6eb6dc4b7b2fed61ce03f1dbb834aaf55c@github.com/millenium9977/seminar-databases-and-express.git#ogmneo:my-movie-db-backend
+    expose:
+      - "2998"
+    networks:
+      - neo4j-network
+    ports:
+      - 2998:2998
+    environment:
+      - PORT=2998
+      - NEO4J_HOST=neo4j-database
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=seminar
+      - RETRY_TIMEOUT=10000
+    depends_on:
+      - neo4j-database
+
+  neo4j-database:
+    image: neo4j:latest
+    restart: always
+    networks:
+      - neo4j-network
+    ports:
+      - 7464:7474
+      - 7463:7473
+      - 7686:7687
+    volumes:
+      - neo4j-database:/neo4jdb/data/db
+    environment:
+      - NEO4J_AUTH=neo4j/seminar
+
+
 volumes:
   mariadb-database:
+  mongo-database:
+  neo4j-database:
 
 
 networks:
