@@ -10,7 +10,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeModule} from './modules/home/home.module';
-import {SaveModule} from './modules/save/save.module';
+import {EndpointsModule} from './modules/endpoints/endpoints.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
@@ -24,7 +24,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ReactiveFormsModule,
     AppRoutingModule,
     HomeModule,
-    SaveModule,
+    EndpointsModule,
     FlexLayoutModule,
   ],
   entryComponents: [AppComponent],

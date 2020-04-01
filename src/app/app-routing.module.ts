@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: './modules/home/home.module#HomeModule'
   },
   {
-    path: 'save',
-    loadChildren: './modules/save/save.module#SaveModule'
+    path: 'endpoints',
+    loadChildren: './modules/endpoints/endpoints.module#EndpointsModule'
   },
   {
     path: '**',

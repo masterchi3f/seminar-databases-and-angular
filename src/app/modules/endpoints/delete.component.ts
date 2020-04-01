@@ -2,28 +2,28 @@ import {Component, OnInit} from '@angular/core';
 import {Step} from '../../data-classes/step';
 
 @Component({
-  selector: 'app-save',
-  templateUrl: './save.component.html',
-  styleUrls: ['./save.component.scss'],
+  selector: 'app-delete',
+  templateUrl: './endpoints.component.html',
+  styleUrls: ['./endpoints.component.scss'],
 })
-export class SaveComponent implements OnInit {
+export class DeleteComponent implements OnInit {
 
   public Steps: Step[] = [
     {
-      Title: 'Step One',
+      Title: 'Step One Delete',
       Type: 'text',
       Value: '',
     },
     {
-      Title: 'Step Two',
+      Title: 'Step Two Delete',
       Type: 'number',
       Value: '',
     }
   ];
 
   public Tests: string[] = [
-    'Save with relations',
-    'Save without relations',
+    'Delete with relations',
+    'Delete without relations',
   ];
 
   constructor() {
