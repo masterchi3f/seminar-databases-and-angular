@@ -1,26 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import {Test} from '../../data-classes/test';
+import {Test} from '../../../data-classes/test';
 
 @Component({
-  selector: 'app-update',
-  templateUrl: './endpoints.component.html',
-  styleUrls: ['./endpoints.component.scss'],
+  selector: 'app-save',
+  templateUrl: '../endpoints.component.html',
+  styleUrls: ['../endpoints.component.scss'],
 })
-export class UpdateComponent implements OnInit {
+export class SaveComponent implements OnInit {
 
   public Tests: Test[] = [
     {
-      Title: 'Update with relations',
+      Title: 'Save with relations',
       Path: '/',
       Steps: [
         {
-          Title: 'Step One Update',
+          Title: 'Step One Save',
           Name: 'One',
           Type: 'text',
           Value: '',
         },
         {
-          Title: 'Step Two Update',
+          Title: 'Step Two Save',
           Name: 'Two',
           Type: 'number',
           Value: '',
@@ -28,17 +28,17 @@ export class UpdateComponent implements OnInit {
       ]
     },
     {
-      Title: 'Update without relations',
+      Title: 'Save without relations',
       Path: '/',
       Steps: [
         {
-          Title: 'Step One Update',
+          Title: 'Step One Save',
           Name: 'One',
           Type: 'text',
           Value: '',
         },
         {
-          Title: 'Step Two Update',
+          Title: 'Step Two Save',
           Name: 'Two',
           Type: 'number',
           Value: '',

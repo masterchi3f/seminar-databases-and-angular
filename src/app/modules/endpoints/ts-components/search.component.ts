@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Test} from '../../data-classes/test';
+import {Test} from '../../../data-classes/test';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './endpoints.component.html',
-  styleUrls: ['./endpoints.component.scss'],
+  templateUrl: '../endpoints.component.html',
+  styleUrls: ['../endpoints.component.scss'],
 })
 export class SearchComponent implements OnInit {
 

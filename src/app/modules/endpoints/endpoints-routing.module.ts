@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SaveComponent} from './save.component';
-import {SearchComponent} from './search.component';
-import {DeleteComponent} from './delete.component';
-import {UpdateComponent} from './update.component';
-import {UtilsComponent} from './utils.component';
+import {SaveComponent} from './ts-components/save.component';
+import {SearchComponent} from './ts-components/search.component';
+import {DeleteComponent} from './ts-components/delete.component';
+import {UpdateComponent} from './ts-components/update.component';
+import {UtilsComponent} from './ts-components/utils.component';
 
 
 const routes: Routes = [
