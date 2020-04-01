@@ -5,22 +5,21 @@
       <button mat-icon-button (click)="nav.toggle()"><mat-icon>menu</mat-icon></button>
       <h1 class="app-name">Seminar & Databases</h1>
     </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button mat-icon-button color="primary" disabled></button>
+      <h1 class="app-name">{{router.url[1].toUpperCase() + router.url.slice(2)}} Endpoint</h1>
+    </mat-toolbar-row>
   </mat-toolbar>
 
   <mat-sidenav-container class="app-sidenav-container">
 
-    <mat-sidenav #nav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" role="navigation">
+    <mat-sidenav #nav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="112" role="navigation">
       <mat-nav-list>
         <a mat-list-item *ngFor="let nav of fillerNav" [routerLink]="'/' + nav.toLowerCase()">{{nav}}</a>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content role="main"  class="app-content" [style.padding.px]="mobileQuery.matches ? 56 : 0">
-      <mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <span>{{model.navName}} Endpoint</span>
-        </mat-toolbar-row>
-      </mat-toolbar>
+    <mat-sidenav-content role="main"  class="app-content" [style.padding.px]="mobileQuery.matches ? 112 : 0">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 

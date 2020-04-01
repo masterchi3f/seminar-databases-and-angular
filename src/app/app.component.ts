@@ -1,6 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import {ModelService} from './model/model.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-component',
@@ -14,10 +14,10 @@ export class AppComponent implements OnDestroy {
 
   private readonly _mobileQueryListener: () => void;
 
-  model: ModelService;
+  router: Router;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _model: ModelService) {
-    this.model = _model;
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, _router: Router) {
+    this.router = _router;
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

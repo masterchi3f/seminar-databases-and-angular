@@ -2,13 +2,13 @@
   <mat-step *ngFor="let step of Steps; let i = index;trackBy:trackByIdx">
     <form *ngIf="step">
       <ng-template matStepLabel>{{step.Title}}</ng-template>
-      <mat-form-field>
+      <mat-form-field style="margin-top: 10px">
         <mat-label>{{step.Title}}</mat-label>
         <input matInput required [type]="step.Type" [(ngModel)]="step.Value">
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious *ngIf="i != 0">Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <div class="item"><button mat-button matStepperPrevious *ngIf="i != 0">Back</button></div>
+        <div class="item"><button mat-button matStepperNext>Next</button></div>
       </div>
     </form>
   </mat-step>
@@ -16,12 +16,15 @@
   <mat-step>
     <ng-template matStepLabel>Fire request</ng-template>
     <div>
-      Test parameters:
+      <h4>Test parameters:</h4>
       <div *ngFor="let step of Steps">
         {{step.Title}}  {{step.Value}}
       </div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="fire()">Fire</button>
+      <br>
+      <div>
+        <div class="item"><button mat-button matStepperPrevious>Back</button></div>
+        <div class="item"><button mat-button (click)="fire()">Fire</button></div>
+      </div>
     </div>
   </mat-step>
 

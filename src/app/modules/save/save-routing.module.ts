@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: SaveComponent
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
