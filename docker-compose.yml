@@ -10,24 +10,29 @@ services:
     networks:
     - mariadb-network
     environment:
-      PORT: 3000
-
-      MARIA_USER: root
-      MARIA_PASSWORD: seminar
+      - PORT=3000
+      - MARIA_USER=seminar
+      - MARIA_PASSWORD=seminar
+      - MARIA_PORT=3306
+      - MARIA_HOST=mariadb-database
+      - RETRY_TIMEOUT=10000
     depends_on:
       - mariadb-database
 
   mariadb-database:
     image: mariadb:latest
     ports:
-    -
+      - 3305:3306
     networks:
     - mariadb-network
     restart: always
+    volumes:
+    - mariadb-database:/mdbdata/mariadb-database
     environment:
-      MYSQL_ROOT_PASSWORD: seminar
-      MYSQL_USER: seminar
-      MYSQL_PASSWORD: seminar
+      - MYSQL_ROOT_PASSWORD=seminar
+      - MYSQL_USER=seminar
+      - MYSQL_PASSWORD=seminar
+      - MYSQL_DATABASE=moviedb
 
 volumes:
   mariadb-database:
