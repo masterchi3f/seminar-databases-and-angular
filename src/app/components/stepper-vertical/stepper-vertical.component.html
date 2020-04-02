@@ -16,14 +16,14 @@
   <mat-step>
     <ng-template matStepLabel>Fire request</ng-template>
     <div>
-      <h4>Test parameters:</h4>
+      <h4 *ngIf="Steps.length > 0">Test parameters:</h4>
       <div *ngFor="let step of Steps">
         {{step.Name}}: {{step.Value}}
         <mat-error style="display:inline;" *ngIf="step.Value == ''">empty</mat-error>
       </div>
       <br>
       <div>
-        <div class="item"><button mat-button matStepperPrevious>Back</button></div>
+        <div class="item"><button mat-button matStepperPrevious *ngIf="Steps.length > 0">Back</button></div>
         <div class="item"><button mat-button (click)="fire()" *ngIf="Steps.every(checkSteps)">Fire</button></div>
       </div>
     </div>
