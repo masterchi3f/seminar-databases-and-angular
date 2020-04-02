@@ -1,10 +1,10 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Result}                              from '../../data-classes/result';
-import {Router}                              from '@angular/router';
-import {Test}                                from '../../data-classes/test';
-import {ApiService}                          from '../../network/api.service';
-import {MatSelectChange}                     from '@angular/material/select';
-import {StepperVerticalComponent}            from '../stepper-vertical/stepper-vertical.component';
+import {Result} from '../../data-classes/result';
+import {Router} from '@angular/router';
+import {Test} from '../../data-classes/test';
+import {ApiService} from '../../network/api.service';
+import {MatSelectChange} from '@angular/material/select';
+import {StepperVerticalComponent} from '../stepper-vertical/stepper-vertical.component';
 
 @Component({
   selector: 'app-test-displayer',
@@ -26,6 +26,7 @@ export class TestDisplayerComponent implements OnInit {
   public static NEO4J_PORT   = 2998;
 
   public SelectedTest: Test;
+  public showCards: boolean = false;
 
   @ViewChild(StepperVerticalComponent) stepper: StepperVerticalComponent;
 
@@ -44,6 +45,7 @@ export class TestDisplayerComponent implements OnInit {
   }
 
   public StartTest() {
+    this.showCards = true;
     console.log(this.SelectedTest);
     const urlMariaDB = this.BuildUrl(TestDisplayerComponent.MARIADB_BASE_URL, TestDisplayerComponent.MARIADB_PORT);
     const urlMongoDB = this.BuildUrl(TestDisplayerComponent.MONGODB_BASE_URL, TestDisplayerComponent.MONGODB_PORT);
@@ -74,7 +76,7 @@ export class TestDisplayerComponent implements OnInit {
 
     this._apiService.getData(url)
       .then(res => {
-        this.SettingResult(index, JSON.stringify(res), res.Time);
+        this.SettingResult(index, JSON.stringify(res.Result), res.Time);
       })
       .catch(err => {
         console.log(err);

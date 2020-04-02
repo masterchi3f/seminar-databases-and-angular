@@ -16,13 +16,13 @@
                           #stepperVerticalComponent></app-stepper-vertical>
   </div>
 
-  <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="SelectedTest">
-    <mat-card *ngFor="let result of Results">
+  <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="showCards">
+    <mat-card *ngFor="let result of Results" class="custom">
       <mat-card-header>
         <mat-card-title>{{result.Name}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <mat-spinner mode="indeterminate"*ngIf="result.Loading"></mat-spinner>
+      <mat-card-content [style.overflow]="'auto'" [style.height.px]="'400'" [style.width.px]="'400'">
+        <mat-spinner mode="indeterminate" *ngIf="result.Loading" class="custom"></mat-spinner>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
           <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
           <mat-expansion-panel>
@@ -34,7 +34,6 @@
             {{result.Content}}
           </mat-expansion-panel>
         </div>
-
       </mat-card-content>
     </mat-card>
   </div>

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Step}                                                      from '../../data-classes/step';
-import {MatVerticalStepper}                                        from '@angular/material/stepper';
+import {Step} from '../../data-classes/step';
+import {MatVerticalStepper} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-stepper-vertical',
