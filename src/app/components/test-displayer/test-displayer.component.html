@@ -12,8 +12,7 @@
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()"
-                          #stepperVerticalComponent></app-stepper-vertical>
+    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
   </div>
 
   <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="showCards">
@@ -21,11 +20,13 @@
       <mat-card-header>
         <mat-card-title>{{result.Name}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content [style.overflow]="'auto'" [style.height.px]="'400'" [style.width.px]="'400'">
-        <mat-spinner mode="indeterminate" *ngIf="result.Loading" class="custom"></mat-spinner>
+      <mat-card-content [style.overflow]="'auto'" [style.max-height.px]="'400'" [style.width.px]="'400'">
+        <div fxLayout="row" fxLayoutAlign="center">
+          <mat-spinner mode="indeterminate" *ngIf="result.Loading"></mat-spinner>
+        </div>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
           <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngIf="result.Content != undefined">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Response Result

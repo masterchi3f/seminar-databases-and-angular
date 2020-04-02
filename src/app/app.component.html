@@ -7,7 +7,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row>
       <button mat-icon-button color="primary" disabled></button>
-      <h1 class="app-name" *ngIf="fillerNav.indexOf(router.url.replace('/endpoints', '').slice(1)) > -1">{{router.url.replace('/endpoints', '')[1].toUpperCase() + router.url.replace('/endpoints', '').slice(2)}}</h1>
+      <h1 class="app-name" *ngIf="fillerNav.indexOf(router.url.replace('/endpoints', '').slice(1)) > -1">{{router.url.replace('/endpoints', '')[1].toUpperCase() + router.url.replace('/endpoints', '').slice(2)}} Endpoint</h1>
       <h1 class="app-name" *ngIf="fillerNav.indexOf(router.url.replace('/endpoints', '').slice(1)) == -1">Home</h1>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -17,7 +17,7 @@
     <mat-sidenav #nav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="112" role="navigation">
       <mat-nav-list>
         <a mat-list-item [routerLink]="'/home'">Home</a>
-        <a mat-list-item *ngFor="let nav of fillerNav" [routerLink]="'/endpoints/' + nav">{{nav[0].toUpperCase() + nav.slice(1)}}</a>
+        <a mat-list-item *ngFor="let nav of fillerNav" [routerLink]="'/endpoints/' + nav">{{nav[0].toUpperCase() + nav.slice(1)}} Endpoint</a>
       </mat-nav-list>
     </mat-sidenav>
 
