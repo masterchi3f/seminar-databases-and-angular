@@ -6,6 +6,7 @@ import {ApiService} from '../../network/api.service';
 import {MatSelectChange} from '@angular/material/select';
 import {StepperVerticalComponent} from '../stepper-vertical/stepper-vertical.component';
 import {FakeDbService} from '../../data/fake-db.service';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-test-displayer',
@@ -81,6 +82,12 @@ export class TestDisplayerComponent implements OnInit {
         s.Content = '';
       },
     );
+
+    /*new Promise(resolve =>
+      setTimeout(resolve, 10000)
+    ).then( r =>
+      this.SettingResult(index, 'o', 'o')
+    );*/
 
     this.apiService.getData(url)
       .then(res => {
