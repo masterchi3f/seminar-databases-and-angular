@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FakeDbService}     from '../../data/fake-db.service';
+import {FakeDbService} from '../../data/fake-db.service';
 
 @Component({
   selector: 'app-home',

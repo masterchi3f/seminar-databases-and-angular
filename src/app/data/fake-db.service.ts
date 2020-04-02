@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Result}     from '../data-classes/result';
-import {Test}       from '../data-classes/test';
-import TestSave     from '../data-classes/test-save';
+import {Result} from '../data-classes/result';
+import {Test} from '../data-classes/test';
+import TestSave from '../data-classes/test-save';
 
 @Injectable({
   providedIn: 'root',
