@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
+  <mat-card *ngFor="let request of fakeDbService.AllRequest">
+    <mat-card-header>
+      <mat-card-title>{{request.TestType}} - {{request.DateTime}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlgin="center center" fxLayoutGap="2%">
+        <mat-card *ngFor="let result of request.Results">
+          <mat-card-header>
+            <mat-card-title>{{result.Name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-spinner mode="indeterminate"*ngIf="result.Loading"></mat-spinner>
+            <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
+              <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Response Result
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                {{result.Content}}
+              </mat-expansion-panel>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
