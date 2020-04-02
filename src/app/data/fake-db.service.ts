@@ -14,10 +14,12 @@ export class FakeDbService {
   }
 
   public AddTest(results: Result[], test: Test) {
+    let testType: string = test.Steps.length > 0 ? test.Title + ':' : test.Title;
+    test.Steps.forEach(step => testType += (' [' + step.Name.toLowerCase() + ': ' + step.Value + ']'));
     this.AllRequest.push({
       Results: results,
       DateTime: new Date().toISOString(),
-      TestType: test.Title,
+      TestType: testType,
     });
   }
 }

@@ -26,7 +26,7 @@
         </div>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
           <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
-          <mat-expansion-panel *ngIf="result.Content != undefined">
+          <mat-expansion-panel *ngIf="result.Content != undefined && result.Content.length < 1">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Response Result

@@ -73,7 +73,7 @@ export class TestDisplayerComponent implements OnInit {
     this.Results = [
       {Name: 'MariaDB', Loading: true, Content: 'Empty', Time: ''},
       {Name: 'MongoDB', Loading: true, Content: 'Empty', Time: ''},
-      {Name: 'Neo4J', Loading: true, Content: 'Empty', Time: ''},
+      {Name: 'Neo4j', Loading: true, Content: 'Empty', Time: ''},
     ];
 
     this.Results.forEach(s => {
