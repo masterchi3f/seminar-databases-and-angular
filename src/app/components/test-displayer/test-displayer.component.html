@@ -1,7 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
   <h4>Select {{router.url.replace('/endpoints', '').slice(1)}} test type:</h4>
   <mat-form-field>
-    <mat-label>{{router.url.replace('/endpoints', '')[1].toUpperCase() + router.url.replace('/endpoints', '').slice(2)}} test</mat-label>
+    <mat-label>{{router.url.replace('/endpoints', '')[1].toUpperCase() + router.url.replace('/endpoints', '').slice(2)}}
+      test
+    </mat-label>
     <mat-select [(value)]="SelectedTest" (selectionChange)="SelectionChanged($event)">
       <mat-option *ngFor="let test of Tests" [value]="test">
         {{test.Title}}
@@ -10,7 +12,8 @@
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()" #stepperVerticalComponent></app-stepper-vertical>
+    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()"
+                          #stepperVerticalComponent></app-stepper-vertical>
   </div>
 
   <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="SelectedTest">
@@ -19,16 +22,18 @@
         <mat-card-title>{{result.Name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-
-        <mat-spinner mode="indeterminate" *ngIf="result.Loading"></mat-spinner>
-        <mat-expansion-panel *ngIf="!result.Loading">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Response Result
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          {{result.Content}}
-        </mat-expansion-panel>
+        <mat-spinner mode="indeterminate"*ngIf="result.Loading"></mat-spinner>
+        <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
+          <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Response Result
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            {{result.Content}}
+          </mat-expansion-panel>
+        </div>
 
       </mat-card-content>
     </mat-card>

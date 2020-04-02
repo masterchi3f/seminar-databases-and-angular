@@ -35,9 +35,9 @@ export class TestDisplayerComponent implements OnInit {
   router: Router;
 
   public Results: Result[] = [
-    {Name: 'MariaDB', Loading: true, Content: 'Empty'},
-    {Name: 'MongoDB', Loading: true, Content: 'Empty'},
-    {Name: 'Neo4J', Loading: true, Content: 'Empty'},
+    {Name: 'MariaDB', Loading: true, Content: 'Empty', Time: ''},
+    {Name: 'MongoDB', Loading: true, Content: 'Empty', Time: ''},
+    {Name: 'Neo4J', Loading: true, Content: 'Empty', Time: ''},
   ];
 
   ngOnInit(): void {
@@ -58,19 +58,27 @@ export class TestDisplayerComponent implements OnInit {
     this.SendRequest(urlNeo4J, 2);
   }
 
-  private SettingResult(index: number, result: string): void {
+  private SettingResult(index: number, result: string, time: string): void {
     this.Results[index].Loading = false;
     this.Results[index].Content = result;
+    this.Results[index].Time    = time;
   }
 
   private SendRequest(url: string, index: number) {
+    this.Results.forEach(s => {
+        s.Loading = true;
+        s.Time = '';
+        s.Content = '';
+      },
+    );
+
     this._apiService.getData(url)
       .then(res => {
-        this.SettingResult(index, JSON.stringify(res));
+        this.SettingResult(index, JSON.stringify(res), res.Time);
       })
       .catch(err => {
         console.log(err);
-        this.SettingResult(index, JSON.stringify(err));
+        this.SettingResult(index, JSON.stringify(err), '');
       });
   }
 
