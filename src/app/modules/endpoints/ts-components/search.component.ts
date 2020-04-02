@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
   public Tests: Test[] = [
     {
       Title: 'Search all movies which contain a term',
-      Path: '/search/movies/',
+      Path: '/search/movies',
       Steps: [
         {
           Title: 'Fill out a containing term',
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     },
     {
       Title: 'Search all movies with a language',
-      Path: '/search/withLang/',
+      Path: '/search/withLang',
       Steps: [
         {
           Title: 'Fill out a language name',
@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
     },
     {
       Title: 'Search all movies with a genre',
-      Path: '/search/withGenre/',
+      Path: '/search/withGenre',
       Steps: [
         {
           Title: 'Fill out a genre name',
@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
     },
     {
       Title: 'Search all companies through all movies which are spoken in a language',
-      Path: '/search/compLang/',
+      Path: '/search/compLang',
       Steps: [
         {
           Title: 'Fill out a language name',
@@ -59,7 +59,7 @@ export class SearchComponent implements OnInit {
     },
     {
       Title: 'Search for the sum of the budget of all movies from a company',
-      Path: '/search/budget/',
+      Path: '/search/budget',
       Steps: [
         {
           Title: 'Fill out a company name',

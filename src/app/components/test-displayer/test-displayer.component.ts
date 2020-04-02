@@ -35,7 +35,11 @@ export class TestDisplayerComponent implements OnInit {
   }
 
   public StartTest() {
-    console.log(this.Tests);
+    console.log(this.SelectedTest);
+    // Der Pfad wird wie gefolgt zusammen gebaut:
+    // DOCKER_URL (war ja sonst localhost) + DB_BASE_URL (siehe oben) + this.SelectedTest.Path + '/' + this.SelectedTest.Steps[0].Value
+    // Beachte 2 Utils Anfragen haben keinen Step und die Update Anfrage hat 2 Steps (sonst alle 1 Step)
+    // Hier könnten alle 3 Anfragen an alle 3 DB gemacht werden
   }
 
 }

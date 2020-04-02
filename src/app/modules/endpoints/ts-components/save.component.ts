@@ -11,7 +11,7 @@ export class SaveComponent implements OnInit {
   public Tests: Test[] = [
     {
       Title: 'Save a number of movies and all related entries',
-      Path: '/save/withRelations/',
+      Path: '/save/withRelations',
       Steps: [
         {
           Title: 'Fill out a number',
@@ -23,7 +23,7 @@ export class SaveComponent implements OnInit {
     },
     {
       Title: 'Save only a number of movies',
-      Path: '/save/noRelations/',
+      Path: '/save/noRelations',
       Steps: [
         {
           Title: 'Fill out a number',

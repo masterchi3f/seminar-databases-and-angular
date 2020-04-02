@@ -11,7 +11,7 @@ export class UpdateComponent implements OnInit {
   public Tests: Test[] = [
     {
       Title: 'Update all movies which contain a term with another term',
-      Path: '/update/replace/',
+      Path: '/update/replace',
       Steps: [
         {
           Title: 'Fill out the replace term',

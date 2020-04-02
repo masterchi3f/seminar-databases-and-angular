@@ -11,7 +11,7 @@ export class DeleteComponent implements OnInit {
   public Tests: Test[] = [
     {
       Title: 'Delete all movies which contain a term',
-      Path: '/delete/movies/',
+      Path: '/delete/movies',
       Steps: [
         {
           Title: 'Fill out a containing term',
@@ -23,7 +23,7 @@ export class DeleteComponent implements OnInit {
     },
     {
       Title: 'Delete all movies with a language',
-      Path: '/delete/withLang/',
+      Path: '/delete/withLang',
       Steps: [
         {
           Title: 'Fill out a language name',
@@ -35,7 +35,7 @@ export class DeleteComponent implements OnInit {
     },
     {
       Title: 'Delete all movies with a genre',
-      Path: '/delete/withGenre/',
+      Path: '/delete/withGenre',
       Steps: [
         {
           Title: 'Fill out a genre name',
@@ -47,7 +47,7 @@ export class DeleteComponent implements OnInit {
     },
     {
       Title: 'Delete all companies through all movies which are spoken in a language',
-      Path: '/delete/companyByLang/',
+      Path: '/delete/companyByLang',
       Steps: [
         {
           Title: 'Fill out a language name',

@@ -21,7 +21,7 @@ export class UtilsComponent implements OnInit {
     },
     {
       Title: 'Search all movies which contain a term',
-      Path: '/utils/movies/',
+      Path: '/utils/movies',
       Steps: [
         {
           Title: 'Fill out a containing term',
