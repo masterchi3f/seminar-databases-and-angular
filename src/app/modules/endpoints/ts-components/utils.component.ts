@@ -10,37 +10,23 @@ export class UtilsComponent implements OnInit {
 
   public Tests: Test[] = [
     {
-      Title: 'Utils with relations',
-      Path: '/',
-      Steps: [
-        {
-          Title: 'Step One Utils',
-          Name: 'One',
-          Type: 'text',
-          Value: '',
-        },
-        {
-          Title: 'Step Two Utils',
-          Name: 'Two',
-          Type: 'number',
-          Value: '',
-        }
-      ]
+      Title: 'Search all movies',
+      Path: '/utils/movies',
+      Steps: []
     },
     {
-      Title: 'Utils without relations',
-      Path: '/',
+      Title: 'Search all companies',
+      Path: '/utils/companies',
+      Steps: []
+    },
+    {
+      Title: 'Search all movies which contain a term',
+      Path: '/utils/movies/',
       Steps: [
         {
-          Title: 'Step One Utils',
-          Name: 'One',
+          Title: 'Fill out a containing term',
+          Name: 'Term',
           Type: 'text',
-          Value: '',
-        },
-        {
-          Title: 'Step Two Utils',
-          Name: 'Two',
-          Type: 'number',
           Value: '',
         }
       ]

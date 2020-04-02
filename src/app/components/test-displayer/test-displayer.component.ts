@@ -10,6 +10,14 @@ import {Test} from '../../data-classes/test';
 })
 export class TestDisplayerComponent implements OnInit {
 
+  constructor(_router: Router) {
+    this.router = _router;
+  }
+
+  public static MARIADB_BASE_URL = '/mariadb';
+  public static MONGODB_BASE_URL = '/mongodb';
+  public static NEO4J_BASE_URL = '/neo4j';
+
   public SelectedTest: Test;
 
   @Input()
@@ -22,10 +30,6 @@ export class TestDisplayerComponent implements OnInit {
     {Name: 'MongoDB', Loading: false, Content: 'Empty'},
     {Name: 'Neo4J', Loading: true, Content: 'Empty'}
   ];
-
-  constructor(_router: Router) {
-    this.router = _router;
-  }
 
   ngOnInit(): void {
   }

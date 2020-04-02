@@ -10,36 +10,24 @@ export class SaveComponent implements OnInit {
 
   public Tests: Test[] = [
     {
-      Title: 'Save with relations',
-      Path: '/',
+      Title: 'Save a number of movies and all related entries',
+      Path: '/save/withRelations/',
       Steps: [
         {
-          Title: 'Step One Save',
-          Name: 'One',
-          Type: 'text',
-          Value: '',
-        },
-        {
-          Title: 'Step Two Save',
-          Name: 'Two',
+          Title: 'Fill out a number',
+          Name: 'Number',
           Type: 'number',
           Value: '',
         }
       ]
     },
     {
-      Title: 'Save without relations',
-      Path: '/',
+      Title: 'Save only a number of movies',
+      Path: '/save/noRelations/',
       Steps: [
         {
-          Title: 'Step One Save',
-          Name: 'One',
-          Type: 'text',
-          Value: '',
-        },
-        {
-          Title: 'Step Two Save',
-          Name: 'Two',
+          Title: 'Fill out a number',
+          Name: 'Number',
           Type: 'number',
           Value: '',
         }

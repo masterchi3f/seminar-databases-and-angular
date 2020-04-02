@@ -10,37 +10,19 @@ export class UpdateComponent implements OnInit {
 
   public Tests: Test[] = [
     {
-      Title: 'Update with relations',
-      Path: '/',
+      Title: 'Update all movies which contain a term with another term',
+      Path: '/update/replace/',
       Steps: [
         {
-          Title: 'Step One Update',
-          Name: 'One',
+          Title: 'Fill out the replace term',
+          Name: 'New term',
           Type: 'text',
           Value: '',
         },
         {
-          Title: 'Step Two Update',
-          Name: 'Two',
-          Type: 'number',
-          Value: '',
-        }
-      ]
-    },
-    {
-      Title: 'Update without relations',
-      Path: '/',
-      Steps: [
-        {
-          Title: 'Step One Update',
-          Name: 'One',
+          Title: 'Fill out the replaced term',
+          Name: 'Old term',
           Type: 'text',
-          Value: '',
-        },
-        {
-          Title: 'Step Two Update',
-          Name: 'Two',
-          Type: 'number',
           Value: '',
         }
       ]
