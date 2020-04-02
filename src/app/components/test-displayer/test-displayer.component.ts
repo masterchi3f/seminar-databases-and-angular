@@ -5,6 +5,7 @@ import {Test}                                from '../../data-classes/test';
 import {ApiService}                          from '../../network/api.service';
 import {MatSelectChange}                     from '@angular/material/select';
 import {StepperVerticalComponent}            from '../stepper-vertical/stepper-vertical.component';
+import {FakeDbService}                       from '../../data/fake-db.service';
 
 @Component({
   selector: 'app-test-displayer',
@@ -13,7 +14,7 @@ import {StepperVerticalComponent}            from '../stepper-vertical/stepper-v
 })
 export class TestDisplayerComponent implements OnInit {
 
-  constructor(_router: Router, private _apiService: ApiService) {
+  constructor(_router: Router, private apiService: ApiService, private fakeDbService: FakeDbService) {
     this.router = _router;
   }
 
@@ -65,16 +66,24 @@ export class TestDisplayerComponent implements OnInit {
   }
 
   private SendRequest(url: string, index: number) {
+
+    this.Results = [
+      {Name: 'MariaDB', Loading: true, Content: 'Empty', Time: ''},
+      {Name: 'MongoDB', Loading: true, Content: 'Empty', Time: ''},
+      {Name: 'Neo4J', Loading: true, Content: 'Empty', Time: ''},
+    ];
+
     this.Results.forEach(s => {
         s.Loading = true;
-        s.Time = '';
+        s.Time    = '';
         s.Content = '';
       },
     );
 
-    this._apiService.getData(url)
+    this.apiService.getData(url)
       .then(res => {
         this.SettingResult(index, JSON.stringify(res), res.Time);
+        this.TrySave();
       })
       .catch(err => {
         console.log(err);
@@ -94,6 +103,18 @@ export class TestDisplayerComponent implements OnInit {
     this.SelectedTest.Steps.forEach(step => step.Value = '');
     if (this.stepper) {
       this.stepper.Reset();
+    }
+  }
+
+  private TrySave() {
+    let allFinished = true;
+    this.Results.forEach(r => {
+      if (r.Loading) {
+        allFinished = false;
+      }
+    });
+    if (allFinished) {
+      this.fakeDbService.AddTest(this.Results, this.SelectedTest);
     }
   }
 }
