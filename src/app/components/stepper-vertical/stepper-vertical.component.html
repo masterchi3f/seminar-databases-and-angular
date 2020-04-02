@@ -1,4 +1,4 @@
-<mat-vertical-stepper [linear]="true" class="vert-stepper">
+<mat-vertical-stepper [linear]="true" class="vert-stepper" #stepper>
   <mat-step *ngFor="let step of Steps; let i = index;trackBy:trackByIdx">
     <form *ngIf="step">
       <ng-template matStepLabel>{{step.Title}}</ng-template>
@@ -7,8 +7,8 @@
         <input matInput required [type]="step.Type" [(ngModel)]="step.Value" name="input">
       </mat-form-field>
       <div>
-        <div class="item"><button mat-button matStepperPrevious *ngIf="i !== 0">Back</button></div>
-        <div class="item"><button mat-button matStepperNext>Next</button></div>
+        <div class="item"><button mat-raised-button color="accent" matStepperPrevious *ngIf="i !== 0">Back</button></div>
+        <div class="item"><button mat-raised-button color="accent" matStepperNext>Next</button></div>
       </div>
     </form>
   </mat-step>
@@ -23,8 +23,8 @@
       </div>
       <br>
       <div>
-        <div class="item"><button mat-button matStepperPrevious *ngIf="Steps.length > 0">Back</button></div>
-        <div class="item"><button mat-button (click)="fire()" *ngIf="Steps.every(checkSteps)">Fire</button></div>
+        <div class="item"><button mat-raised-button color="accent" matStepperPrevious *ngIf="Steps.length > 0">Back</button></div>
+        <div class="item"><button mat-raised-button color="accent"(click)="fire()" *ngIf="Steps.every(checkSteps)">Fire</button></div>
       </div>
     </div>
   </mat-step>

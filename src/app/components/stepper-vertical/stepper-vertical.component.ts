@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Step} from '../../data-classes/step';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Step}                                                      from '../../data-classes/step';
+import {MatVerticalStepper}                                        from '@angular/material/stepper';
 
 @Component({
   selector: 'app-stepper-vertical',
@@ -7,6 +8,7 @@ import {Step} from '../../data-classes/step';
   styleUrls: ['./stepper-vertical.component.scss'],
 })
 export class StepperVerticalComponent implements OnInit {
+  @ViewChild('stepper') stepper: MatVerticalStepper;
 
   @Input()
   public Steps: Step[];
@@ -29,4 +31,8 @@ export class StepperVerticalComponent implements OnInit {
     return step.Value !== '';
   }
 
+
+  public Reset() {
+    this.stepper.reset();
+  }
 }

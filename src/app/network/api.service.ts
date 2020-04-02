@@ -9,8 +9,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  async getData(url: string): Promise<Result> {
-    return this.http.get<Result>(url).toPromise();
+  async getData(url: string): Promise<any> {
+    return this.http.get(url).toPromise();
   }
 
 }

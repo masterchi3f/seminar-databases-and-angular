@@ -72,16 +72,20 @@ services:
       - 2998:2998
     environment:
       - PORT=2998
-      - NEO4J_HOST=neo4j-database
+      - NEO4J_HOST=neo4j-database:7687
       - NEO4J_USERNAME=neo4j
       - NEO4J_PASSWORD=seminar
       - RETRY_TIMEOUT=10000
     depends_on:
-      - neo4j-database
+      - "neo4j-database"
 
   neo4j-database:
-    image: neo4j:latest
+    image: neo4j:3.5.17
     restart: always
+    expose:
+      - "7474"
+      - "7473"
+      - "7687"
     networks:
       - neo4j-network
     ports:
