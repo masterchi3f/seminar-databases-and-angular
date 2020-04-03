@@ -16,6 +16,7 @@ services:
       - MARIA_PORT=3306
       - MARIA_HOST=mariadb-database
       - RETRY_TIMEOUT=10000
+      - DEFAULT_ENTRY_SIZE=100
     depends_on:
       - mariadb-database
 
@@ -46,6 +47,7 @@ services:
       - PORT=2999
       - RETRY_TIMEOUT=10000
       - CONNECTION_URI=mongodb://seminar:seminar@mongo-database:27017
+      - DEFAULT_ENTRY_SIZE=100
     depends_on:
       - mongo-database
 
@@ -76,6 +78,7 @@ services:
       - NEO4J_USERNAME=neo4j
       - NEO4J_PASSWORD=seminar
       - RETRY_TIMEOUT=10000
+      - DEFAULT_ENTRY_SIZE=100
     depends_on:
       - "neo4j-database"
 
