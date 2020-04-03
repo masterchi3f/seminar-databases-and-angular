@@ -50,6 +50,10 @@ export class TestDisplayerComponent implements OnInit {
     const urlMongoDB = this.BuildUrl(TestDisplayerComponent.MONGODB_BASE_URL, TestDisplayerComponent.MONGODB_PORT);
     const urlNeo4J   = this.BuildUrl(TestDisplayerComponent.NEO4J_BASE_URL, TestDisplayerComponent.NEO4J_PORT);
 
+    console.log(urlMariaDB);
+    console.log(urlMongoDB);
+    console.log(urlNeo4J);
+
     this.SendRequest(urlMariaDB, 0);
     this.SendRequest(urlMongoDB, 1);
     this.SendRequest(urlNeo4J, 2);
@@ -60,9 +64,11 @@ export class TestDisplayerComponent implements OnInit {
     resultObject.Loading       = false;
     resultObject.Content       = result;
     resultObject.Time          = time;
-    resultObject.Length        = result.length;
-    resultObject.PageSize      = 10;
-    resultObject.DisplayResult = resultObject.Content.slice(0, 10).map<string>(i => JSON.stringify(i, null, 2));
+    if (result && result.length > 10) {
+      resultObject.Length        = result.length;
+      resultObject.PageSize      = 10;
+      resultObject.DisplayResult = resultObject.Content.slice(0, 10).map<string>(i => JSON.stringify(i, null, 2));
+    }
   }
 
   private SendRequest(url: string, index: number) {
@@ -145,8 +151,8 @@ export class TestDisplayerComponent implements OnInit {
   public PageChanged(pageEvent: PageEvent, result: Result) {
     if (pageEvent && result) {
       result.PageSize             = pageEvent.pageSize;
-      const start = pageEvent.pageIndex * pageEvent.pageSize;
-      const end = pageEvent.pageSize  * (pageEvent.pageIndex + 1);
+      const start                 = pageEvent.pageIndex * pageEvent.pageSize;
+      const end                   = pageEvent.pageSize * (pageEvent.pageIndex + 1);
       const displayContent: any[] = result.Content.slice(start, end);
       result.DisplayResult        = displayContent.map<string>(i => JSON.stringify(i, null, 5));
     }
