@@ -12,6 +12,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fakeDbService.AllRequest.forEach(t => t.Results.forEach(r => r.Content = r.DisplayResult));
   }
-
 }

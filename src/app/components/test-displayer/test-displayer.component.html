@@ -12,7 +12,8 @@
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps" (FireClicked)="StartTest()"></app-stepper-vertical>
+    <app-stepper-vertical *ngIf="SelectedTest" [Steps]="SelectedTest.Steps"
+                          (FireClicked)="StartTest()"></app-stepper-vertical>
   </div>
 
   <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" *ngIf="showCards">
@@ -20,19 +21,24 @@
       <mat-card-header>
         <mat-card-title>{{result.Name}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content [style.overflow]="'auto'" [style.max-height.px]="'400'" [style.width.px]="'400'">
-        <div fxLayout="row" fxLayoutAlign="center">
+      <mat-card-content [style.overflow]="'auto'" [style.min-height.px]="'150'" [style.max-height.px]="'500'"
+                        [style.width.px]="'500'">
+        <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner mode="indeterminate" *ngIf="result.Loading"></mat-spinner>
         </div>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
           <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
-          <mat-expansion-panel *ngIf="result.Content != undefined && result.Content.length < 1">
+          <mat-expansion-panel *ngIf="result.Content != undefined && result.Content.length > 0">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Response Result
               </mat-panel-title>
             </mat-expansion-panel-header>
-            {{result.Content}}
+            <mat-paginator [length]="result.Length" [pageSize]="result.PageSize" [pageSizeOptions]="pageSizeOptions"
+                           (page)="PageChanged($event, result)"></mat-paginator>
+            <p *ngFor="let entry of result.DisplayResult">
+              {{entry}}
+            </p>
           </mat-expansion-panel>
         </div>
       </mat-card-content>

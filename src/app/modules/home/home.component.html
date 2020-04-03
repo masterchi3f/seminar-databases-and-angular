@@ -1,27 +1,29 @@
-<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
+<div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
   <mat-card *ngFor="let request of fakeDbService.AllRequest" class="custom" [style.min-width.px]="'400'">
     <mat-card-header>
       <mat-card-title>{{request.TestType}}<br>{{request.DateTime}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div fxLayout="column wrap" fxLayoutAlgin="center" fxLayoutGap="2%">
+      <div fxLayout="row wrap" fxLayoutAlgin="center center" fxLayoutGap="2%">
         <mat-card *ngFor="let result of request.Results" class="custom">
           <mat-card-header>
             <mat-card-title>{{result.Name}}</mat-card-title>
           </mat-card-header>
-          <mat-card-content [style.overflow]="'auto'" [style.max-height.px]="'300'" [style.width.px]="'300'">
+          <mat-card-content [style.overflow]="'auto'" [style.max-height.px]="'300'" [style.width.px]="'400'">
             <div fxLayout="row" fxLayoutAlign="center">
               <mat-spinner mode="indeterminate" *ngIf="result.Loading"></mat-spinner>
             </div>
             <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5%" *ngIf="!result.Loading">
               <div *ngIf="result.Time != ''" style="text-align: center">Needed time: <b>{{result.Time}}</b></div>
-              <mat-expansion-panel *ngIf="result.Content != undefined && result.Content.length < 1">
+              <mat-expansion-panel *ngIf="result.Content != undefined && result.Content.length > 0">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     Response Result
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                {{result.Content}}
+                <p *ngFor="let entry of result.Content">
+                  {{entry}}
+                </p>
               </mat-expansion-panel>
             </div>
           </mat-card-content>

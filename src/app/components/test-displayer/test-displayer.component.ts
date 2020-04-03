@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Result} from '../../data-classes/result';
-import {Router} from '@angular/router';
-import {Test} from '../../data-classes/test';
-import {ApiService} from '../../network/api.service';
-import {MatSelectChange} from '@angular/material/select';
-import {StepperVerticalComponent} from '../stepper-vertical/stepper-vertical.component';
-import {FakeDbService} from '../../data/fake-db.service';
-import {delay} from 'rxjs/operators';
+import {Result}                              from '../../data-classes/result';
+import {Router}                              from '@angular/router';
+import {Test}                                from '../../data-classes/test';
+import {ApiService}                          from '../../network/api.service';
+import {MatSelectChange}                     from '@angular/material/select';
+import {StepperVerticalComponent}            from '../stepper-vertical/stepper-vertical.component';
+import {FakeDbService}                       from '../../data/fake-db.service';
+import {PageEvent}                           from '@angular/material/paginator';
 
 @Component({
   selector: 'app-test-displayer',
@@ -28,7 +28,7 @@ export class TestDisplayerComponent implements OnInit {
   public static NEO4J_PORT   = 2998;
 
   public SelectedTest: Test;
-  public showCards: boolean = false;
+  public showCards = false;
 
   @ViewChild(StepperVerticalComponent) stepper: StepperVerticalComponent;
 
@@ -37,11 +37,8 @@ export class TestDisplayerComponent implements OnInit {
 
   router: Router;
 
-  public Results: Result[] = [
-    {Name: 'MariaDB', Loading: true, Content: 'Empty', Time: ''},
-    {Name: 'MongoDB', Loading: true, Content: 'Empty', Time: ''},
-    {Name: 'Neo4J', Loading: true, Content: 'Empty', Time: ''},
-  ];
+  public Results: Result[]         = this.GetFreshResultsObject();
+  public pageSizeOptions: number[] = [5, 10, 25];
 
   ngOnInit(): void {
   }
@@ -53,33 +50,31 @@ export class TestDisplayerComponent implements OnInit {
     const urlMongoDB = this.BuildUrl(TestDisplayerComponent.MONGODB_BASE_URL, TestDisplayerComponent.MONGODB_PORT);
     const urlNeo4J   = this.BuildUrl(TestDisplayerComponent.NEO4J_BASE_URL, TestDisplayerComponent.NEO4J_PORT);
 
-    console.log(urlMariaDB);
-    console.log(urlMongoDB);
-    console.log(urlNeo4J);
-
     this.SendRequest(urlMariaDB, 0);
     this.SendRequest(urlMongoDB, 1);
     this.SendRequest(urlNeo4J, 2);
   }
 
-  private SettingResult(index: number, result: string, time: string): void {
-    this.Results[index].Loading = false;
-    this.Results[index].Content = result;
-    this.Results[index].Time    = time;
+  private SettingResult(index: number, result: any[], time: string): void {
+    const resultObject: Result = this.Results[index];
+    resultObject.Loading       = false;
+    resultObject.Content       = result;
+    resultObject.Time          = time;
+    resultObject.Length        = result.length;
+    resultObject.PageSize      = 10;
+    resultObject.DisplayResult = resultObject.Content.slice(0, 10).map<string>(i => JSON.stringify(i, null, 2));
   }
 
   private SendRequest(url: string, index: number) {
 
-    this.Results = [
-      {Name: 'MariaDB', Loading: true, Content: 'Empty', Time: ''},
-      {Name: 'MongoDB', Loading: true, Content: 'Empty', Time: ''},
-      {Name: 'Neo4j', Loading: true, Content: 'Empty', Time: ''},
-    ];
+    this.Results = this.GetFreshResultsObject();
 
     this.Results.forEach(s => {
-        s.Loading = true;
-        s.Time    = '';
-        s.Content = '';
+        s.Loading  = true;
+        s.Time     = '';
+        s.Content  = [];
+        s.Length   = 0;
+        s.PageSize = 0;
       },
     );
 
@@ -91,12 +86,12 @@ export class TestDisplayerComponent implements OnInit {
 
     this.apiService.getData(url)
       .then(res => {
-        this.SettingResult(index, JSON.stringify(res.Result), res.Time);
+        this.SettingResult(index, res.Result, res.Time);
         this.TrySave();
       })
       .catch(err => {
         console.log(err);
-        this.SettingResult(index, JSON.stringify(err), '');
+        this.SettingResult(index, err, '');
       });
   }
 
@@ -124,6 +119,36 @@ export class TestDisplayerComponent implements OnInit {
     });
     if (allFinished) {
       this.fakeDbService.AddTest(this.Results, this.SelectedTest);
+    }
+  }
+
+  private GetFreshResultsObject(): Result[] {
+    return [
+      this.MakeFreshResultObject('MariaDB'),
+      this.MakeFreshResultObject('MongoDB'),
+      this.MakeFreshResultObject('Neo4J'),
+    ];
+  }
+
+  private MakeFreshResultObject(name: string): Result {
+    return {
+      Name: name,
+      Loading: true,
+      Content: [],
+      Time: '',
+      Length: 0,
+      PageSize: 0,
+      DisplayResult: [],
+    };
+  }
+
+  public PageChanged(pageEvent: PageEvent, result: Result) {
+    if (pageEvent && result) {
+      result.PageSize             = pageEvent.pageSize;
+      const start = pageEvent.pageIndex * pageEvent.pageSize;
+      const end = pageEvent.pageSize  * (pageEvent.pageIndex + 1);
+      const displayContent: any[] = result.Content.slice(start, end);
+      result.DisplayResult        = displayContent.map<string>(i => JSON.stringify(i, null, 5));
     }
   }
 }
