@@ -22,6 +22,7 @@ services:
 
   mariadb-database:
     image: mariadb:latest
+    command: "--character_set_server=latin1 --collation_server=latin1_general_cs"
     ports:
       - 3305:3306
     networks:
