@@ -18,7 +18,7 @@ export class UtilsComponent implements OnInit {
       Title: 'Search all companies',
       Path: '/utils/companies',
       Steps: []
-    },
+    }/*,
     {
       Title: 'Search all movies which contain a term',
       Path: '/utils/movies',
@@ -30,7 +30,7 @@ export class UtilsComponent implements OnInit {
           Value: '',
         }
       ]
-    }
+    }*/
   ];
 
   constructor() {

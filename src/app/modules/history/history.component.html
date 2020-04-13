@@ -1,3 +1,7 @@
+<mat-card class="custom">
+  <h3>Warning: Without any local storage or other save mechanisms! Keep in mind that refreshing deletes the history!</h3>
+  <h3>Info: Shows only the first ten results in each response.</h3>
+</mat-card>
 <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="2%" class="normal_border">
   <mat-card *ngFor="let request of fakeDbService.AllRequest" class="custom" [style.min-width.px]="'400'">
     <mat-card-header>

@@ -1,24 +1,24 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {HomeRoutingModule} from './home-routing.module';
-import {HomeComponent} from './home.component';
+import {HistoryRoutingModule} from './history-routing.module';
+import {HistoryComponent} from './history.component';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from '../../../material-module';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HistoryComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    HistoryRoutingModule,
     FormsModule,
     FlexLayoutModule,
     MaterialModule,
   ],
   exports: [
-    HomeComponent
+    HistoryComponent
   ],
 })
-export class HomeModule { }
+export class HistoryModule { }

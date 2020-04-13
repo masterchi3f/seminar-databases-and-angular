@@ -4,8 +4,8 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: './modules/home/home.module#HomeModule'
+    path: 'history',
+    loadChildren: './modules/history/history.module#HistoryModule'
   },
   {
     path: 'endpoints',
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: './modules/home/home.module#HomeModule'
+    loadChildren: './modules/history/history.module#HistoryModule'
   }
 ];
 
