@@ -1,7 +1,11 @@
-#Seminar-Databases-And-Angular
+# Seminar-Databases-And-Angular
 
-###Docker
+### Docker Backend + Databases
 
 docker-compose up --build
 
 without output add: --detach
+
+### Frontend
+
+localhost:4200
